@@ -1,3 +1,9 @@
+/*
+There are delays in this one that would allow it to stop it is to let anyone who wants to try my code. I am not 
+sure if it works but I made sure of it. 
+
+*/
+
 #include <wiringPi.h>
 #include <softPwm.h>
 const int MOTORCOUNT = 2;
