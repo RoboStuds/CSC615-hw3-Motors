@@ -9,12 +9,12 @@ sure if it works but I made sure of it.
 const int MOTORCOUNT = 2;
 
 // enable fwd reverse
-const int MOTORS[2][3] = {11, 15, 13,
-                          22, 16, 18}; // for the pins
+const int MOTORS[2][3] = {{0, 2, 3},
+                          {6, 4, 5}}; // for the pins
 
 int moveMotors(int fwd, int reverse, int speed, int range)
 {
-    if (softPwmCreate(MOTORS[0][0], 0, range) != 0 && softPwmCreate(MOTORS[1][0], 0, range))
+    if (softPwmCreate(MOTORS[0][0], 0, range) != 0 && softPwmCreate(MOTORS[1][0], 0, range) != 0)
     {
         return -1;
     }
