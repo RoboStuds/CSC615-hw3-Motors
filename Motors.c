@@ -10,31 +10,32 @@ const int MOTORCOUNT = 2;
 
 // enable fwd reverse
 const int MOTORS[2][3] = {11, 15, 13,
-                          22, 16, 18}; // for the pins
+                          22, 16, 18}; // for the pins 
 
 int moveMotors(int fwd, int reverse, int speed, int range)
 {
-    if (softPwmCreate(MOTORS[0][0], 0, range) != 0 && softPwmCreate(MOTORS[1][0], 0, range))
+    if (softPwmCreate(MOTORS[0][0], 0, range) != 0 && softPwmCreate(MOTORS[1][0], 0, range) != 0)
     {
         return -1;
     }
     for (int motorNum = 0; motorNum < MOTORCOUNT; motorNum++)
     {
+      // depending on moving fwd and reverse if fwd 1 is 1 then it is moving forward. 
         digitalWrite(MOTORS[motorNum][0], 1); // e
         digitalWrite(MOTORS[motorNum][1], fwd); // fwd
         digitalWrite(MOTORS[motorNum][2], reverse); // reverse
     }
-    
+    // determine the speed
     softPwmWrite(MOTORS[0][0], speed);
     softPwmWrite(MOTORS[1][0], speed);
-    delay(2000); // 2 seconds
+    delay(2000); // 2 seconds of spinning
     for (int off = 0; off < MOTORCOUNT; off++)
     {
         digitalWrite(MOTORS[off][0], 0); // e
         digitalWrite(MOTORS[off][1], 0); // fwd
         digitalWrite(MOTORS[off][2], 0); // reverse
     }
-    delay(3000); // 3 seconds
+    delay(3000); // 3 seconds of letting cool then again
     return 0;
 }
 int main (void)
