@@ -1,1 +1,1 @@
-gcc -lwiringPi motors.c -o assignment3
+gcc -lwiringPi Motors.c -o assignment3
