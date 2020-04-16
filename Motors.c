@@ -49,7 +49,7 @@ int main (void)
             digitalWrite(MOTORS[i][j], LOW);
         }
     }
-  if (softPwmCreate(MOTORS[0][0], 0, range) != 0 && softPwmCreate(MOTORS[1][0], 0, range) != 0)
+  if (softPwmCreate(MOTORS[0][0], 0, 100) != 0 && softPwmCreate(MOTORS[1][0], 0, 100) != 0)
     {
         return -1;
     }
