@@ -14,10 +14,6 @@ const int MOTORS[2][3] = {{0, 2, 3},
 
 int moveMotors(int fwd, int reverse, int speed, int range)
 {
-    if (softPwmCreate(MOTORS[0][0], 0, range) != 0 && softPwmCreate(MOTORS[1][0], 0, range) != 0)
-    {
-        return -1;
-    }
     for (int motorNum = 0; motorNum < MOTORCOUNT; motorNum++)
     {
       // depending on moving fwd and reverse if fwd 1 is 1 then it is moving forward. 
@@ -52,6 +48,10 @@ int main (void)
             pinMode (MOTORS[i][j], OUTPUT);
             digitalWrite(MOTORS[i][j], LOW);
         }
+    }
+  if (softPwmCreate(MOTORS[0][0], 0, range) != 0 && softPwmCreate(MOTORS[1][0], 0, range) != 0)
+    {
+        return -1;
     }
     if (moveMotors(1, 0, 20, 100) == -1 || moveMotors(1, 0, 10, 100) == -1)
     {
